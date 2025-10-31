@@ -1,0 +1,12 @@
+spotify/*
+go/*
+GIMP/*
+keepassxc/*
+mozzila/*
+pulse/*
+QtProject.conf
+hyprpanel/config.json
+dconf
+nvim/lazy-lock.json
+nvim/spell/en.utf-8.add.spl
+nvim/spell/en.utf-8.add
