@@ -1,0 +1,112 @@
+gui:
+  showFileTree: true
+  nerdFonts: true
+  sidePanelWidth: 0.33
+  theme:
+    activeBorderColor:
+      - '#c6a0f6'
+      - bold
+    inactiveBorderColor:
+      - '#a5adcb'
+    optionsTextColor:
+      - '#8aadf4'
+    selectedLineBgColor:
+      - '#363a4f'
+    cherryPickedCommitBgColor:
+      - '#494d64'
+    cherryPickedCommitFgColor:
+      - '#c6a0f6'
+    unstagedChangesColor:
+      - '#ed8796'
+    defaultFgColor:
+      - '#cad3f5'
+    searchingActiveBorderColor:
+      - '#eed49f'
+  authorColors:
+    '*': '#b7bdf8'
+git:
+  autoFetch: true
+  pull:
+    mode: 'rebase'
+  log:
+    order: "topo-order"
+  pagers:
+    - useConfig: true
+  commit:
+    signOff: true
+    sign: true
+customCommands:
+  - key: '<c-d>'
+    command: "git branch --merged | egrep -v '(^\\*|main|master|develop)' | xargs git branch -d"
+    context: 'localBranches'
+    description: 'delete all merged local branches'
+    loadingText: 'Deleting branches...'
+  - key: "C"
+    context: "files"
+    description: "Create new conventional commit"
+    prompts:
+      - type: "menu"
+        key: "Type"
+        title: "Type of change"
+        options:
+          - name: "feat"
+            description: "A new feature"
+            value: "feat"
+          - name: "fix"
+            description: "A bug fix"
+            value: "fix"
+          - name: "refactor"
+            description: "A code change that neither fixes a bug nor adds a feature"
+            value: "refactor"
+          - name: "docs"
+            description: "Documentation only changes"
+            value: "docs"
+          - name: "style"
+            description: "Changes that do not affect the meaning of the code"
+            value: "style"
+          - name: "revert"
+            description: "Reverts a previous commit"
+            value: "revert"
+          - name: "chore"
+            description: "Other changes that don't modify src or test files"
+            value: "chore"
+          - name: "ci"
+            description: "Changes to CI configuration files and scripts"
+            value: "ci"
+          - name: "perf"
+            description: "A code change that improves performance"
+            value: "perf"
+          - name: "build"
+            description: "Changes that affect the build system or external dependencies"
+            value: "build"
+          - name: "test"
+            description: "Adding missing tests or correcting existing tests"
+            value: "test"
+      - type: "input"
+        title: "Scope"
+        key: "Scope"
+        initialValue: ""
+      - type: "menu"
+        key: "Breaking"
+        title: "Breaking change"
+        options:
+          - name: "no"
+            value: ""
+          - name: "yes"
+            value: "!"
+      - type: "input"
+        title: "message"
+        key: "Message"
+        initialValue: ""
+      - type: "confirm"
+        key: "Confirm"
+        title: "Commit"
+        body: "Are you sure you want to commit?"
+    command: "git commit -s --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
+    loadingText: "Creating conventional commit..."
+# Map our custom commands to the keys we defined
+keybinding:
+  files:
+    'C': 'customCommand:C'
+  localBranches:
+    '<c-d>': 'customCommand:<c-d>'

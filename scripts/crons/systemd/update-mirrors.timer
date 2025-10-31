@@ -1,0 +1,11 @@
+[Unit]
+Description=Run mirrorlist update script daily
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1h
+Persistent=true
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timer.target

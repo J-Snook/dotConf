@@ -1,0 +1,4 @@
+export ZDOTDIR="$HOME/.config/zsh"
+
+#Source if exists
+[[ -f $ZDOTDIR/.zshenv ]] && . $ZDOTDIR/.zshenv

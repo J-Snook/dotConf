@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup and update pacman mirrorlist using reflector
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/josh/.config/scripts/crons/update-pacman.sh
+
