@@ -19,6 +19,7 @@ alias pacup='sudo pacman -Syu'
 alias pacin='sudo pacman -S'
 alias pacs='sudo pacman -Ss'
 
+export GPG_TTY=$(tty)
 
 #Lazy git
 lg()
