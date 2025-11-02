@@ -3,17 +3,16 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
-  priority = 1000, -- Make sure to load this before other plugins
+  priority = 1000, 
   opts = {
-    flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    -- Add any other catppuccin options here
+    flavour = "macchiato", 
     integrations = {
       cmp = true,
       gitsigns = true,
       nvimtree = true,
       telescope = true,
       which_key = true,
-      -- ... and many more!
+      telescope = true
     },
   },
   config = function(_, opts)
