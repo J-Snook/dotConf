@@ -12,6 +12,7 @@ return {
       gitsigns = true,
       nvimtree = true,
       telescope = true,
+      which_key = true,
       -- ... and many more!
     },
   },
